@@ -1,87 +1,19 @@
 [
   {
-    "account": "0.0.5714930",
+    "account": "0.0.5714928",
     "balance_start": 0,
-    "balance_end": 335334102208,
-    "change": 335334102208,
-    "transaction_count": 2,
-    "transactions": [
-      {
-        "transaction_id": "0.0.5714930-1762242166-783987857",
-        "consensus_timestamp": "1762242176.300352001",
-        "account_id": "0.0.5714930",
-        "usdc_transfers": [
-          {
-            "token_id": "0.0.456858",
-            "account": "0.0.3964804",
-            "amount": -335334102208,
-            "is_approval": false
-          },
-          {
-            "token_id": "0.0.456858",
-            "account": "0.0.5714930",
-            "amount": 335334102208,
-            "is_approval": false
-          }
-        ],
-        "memo_base64": "",
-        "result": "SUCCESS",
-        "charged_tx_fee": 0
-      },
-      {
-        "transaction_id": "0.0.5714930-1763367758-198971485",
-        "consensus_timestamp": "1763367764.834078097",
-        "account_id": "0.0.5714930",
-        "usdc_transfers": [
-          {
-            "token_id": "0.0.456858",
-            "account": "0.0.3964804",
-            "amount": 335334102208,
-            "is_approval": false
-          },
-          {
-            "token_id": "0.0.456858",
-            "account": "0.0.5714930",
-            "amount": -335334102208,
-            "is_approval": true
-          }
-        ],
-        "memo_base64": "",
-        "result": "SUCCESS",
-        "charged_tx_fee": 0
-      }
-    ]
+    "balance_end": 0,
+    "change": 0,
+    "transaction_count": 0,
+    "transactions": []
   },
   {
-    "account": "0.0.3215870",
+    "account": "0.0.3215869",
     "balance_start": 413298,
-    "balance_end": 246200541439,
-    "change": 246200128141,
-    "transaction_count": 1,
-    "transactions": [
-      {
-        "transaction_id": "0.0.3215870-1762450427-726204642",
-        "consensus_timestamp": "1762450433.153499001",
-        "account_id": "0.0.3215870",
-        "usdc_transfers": [
-          {
-            "token_id": "0.0.456858",
-            "account": "0.0.3215870",
-            "amount": 246200128141,
-            "is_approval": false
-          },
-          {
-            "token_id": "0.0.456858",
-            "account": "0.0.3964804",
-            "amount": -246200128141,
-            "is_approval": false
-          }
-        ],
-        "memo_base64": "",
-        "result": "SUCCESS",
-        "charged_tx_fee": 0
-      }
-    ]
+    "balance_end": 0,
+    "change": 0,
+    "transaction_count": 0,
+    "transactions": []
   },
   {
     "account": "0.0.1012978",
