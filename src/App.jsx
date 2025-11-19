@@ -12,7 +12,7 @@ function App() {
     totalVolume: 0,
     totalTransactions: 0,
     avgTransactionSize: 0,
-    dailyActiveUsers: 0,
+    avgDailyActiveUsers: 0,
     weeklyActiveUsers: 0,
     monthlyActiveUsers: 0,
     repeatCustomers: 0,
@@ -22,25 +22,8 @@ function App() {
     avgRevenuePerAccount: 0
   });
   const [timeSeriesData, setTimeSeriesData] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [dailyStats, setDailyStats] = useState([]);
-
-  useEffect(() => {
-    fetch('/data/biweekly_sync.json')
-      .then(res => res.json())
-      .then(accountData => {
-        setData(accountData);
-        calculateStats(accountData);
-        calculateTimeSeriesData(accountData);
-        setLoading(false);
-        
-        // Fetch transactions for each account
-        fetchTransactionsForAccounts(accountData);
-      })
-      .catch(err => {
-        console.error('Error loading data:', err);
-        setLoading(false);
-      });
-  }, []);
 
   const fetchTransactionsForAccounts = async (accountData) => {
     console.log(`Starting to fetch transactions for ${accountData.length} accounts...`);
@@ -77,9 +60,8 @@ function App() {
     console.log('Finished fetching transactions for all accounts');
   };
 
-  const calculateStats = (accountData) => {
+  const calculateStats = (accountData, dailyData) => {
     const now = Date.now() / 1000; // Current time in seconds
-    const oneDayAgo = now - (24 * 60 * 60);
     const oneWeekAgo = now - (7 * 24 * 60 * 60);
     const oneMonthAgo = now - (30 * 24 * 60 * 60);
 
@@ -103,10 +85,10 @@ function App() {
     // Sort by timestamp
     allTransactions.sort((a, b) => a.timestamp - b.timestamp);
 
-    // Calculate DAU, WAU, MAU
-    const uniqueAccountsInDay = new Set(
-      allTransactions.filter(tx => tx.timestamp >= oneDayAgo).map(tx => tx.accountId)
-    ).size;
+    // Calculate average DAU from daily data (last 30 days)
+    const avgDailyActiveUsers = dailyData && dailyData.length > 0
+      ? dailyData.reduce((sum, day) => sum + day.activeUsers, 0) / dailyData.length
+      : 0;
 
     const uniqueAccountsInWeek = new Set(
       allTransactions.filter(tx => tx.timestamp >= oneWeekAgo).map(tx => tx.accountId)
@@ -162,7 +144,7 @@ function App() {
       totalVolume,
       totalTransactions,
       avgTransactionSize,
-      dailyActiveUsers: uniqueAccountsInDay,
+      avgDailyActiveUsers,
       weeklyActiveUsers: uniqueAccountsInWeek,
       monthlyActiveUsers: uniqueAccountsInMonth,
       repeatCustomers,
@@ -219,6 +201,9 @@ function App() {
       }))
       .sort((a, b) => new Date(a.date) - new Date(b.date));
 
+    // Return full daily array for calculating avg DAU (all days in tx interval)
+    const returnData = dailyArray;
+    
     // Take last 30 days for the chart
     const last30Days = dailyArray.slice(-30);
     setDailyStats(last30Days);
@@ -254,7 +239,27 @@ function App() {
       .slice(-12); // Last 12 weeks
 
     setTimeSeriesData(weeklyArray);
+    
+    return returnData;
   };
+
+  useEffect(() => {
+    fetch('/data/biweekly_sync.json')
+      .then(res => res.json())
+      .then(accountData => {
+        setData(accountData);
+        const dailyData = calculateTimeSeriesData(accountData);
+        calculateStats(accountData, dailyData);
+        setLoading(false);
+        
+        // Fetch transactions for each account
+        fetchTransactionsForAccounts(accountData);
+      })
+      .catch(err => {
+        console.error('Error loading data:', err);
+        setLoading(false);
+      });
+  }, []);
 
   const formatUSDC = (amount) => {
     // USDC uses 6 decimals on Hedera
@@ -267,6 +272,7 @@ function App() {
     }).format(usdc);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const formatUSDCShort = (amount) => {
     // USDC uses 6 decimals on Hedera
     const usdc = amount / 1000000;
@@ -405,9 +411,9 @@ function App() {
               <Clock size={24} color="#ec4899" />
             </div>
             <div className="metric-content">
-              <h3>Daily Active Users</h3>
-              <p className="metric-value">{formatNumber(stats.dailyActiveUsers)}</p>
-              <span className="metric-label">Accounts active in last 24 hours</span>
+              <h3>Avg Daily Active Users</h3>
+              <p className="metric-value">{formatDecimal(stats.avgDailyActiveUsers)}</p>
+              <span className="metric-label">Average daily active accounts (all time)</span>
             </div>
           </div>
 
