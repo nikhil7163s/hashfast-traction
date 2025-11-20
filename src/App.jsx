@@ -25,6 +25,346 @@ function App() {
   // eslint-disable-next-line no-unused-vars
   const [dailyStats, setDailyStats] = useState([]);
 
+    // {
+  //   "account": "0.0.1012978",
+  //   "balance_start": 0,
+  //   "balance_end": 113887353713,
+  //   "change": 113887353713,
+  //   "transaction_count": 15,
+  //   "transactions": [
+  //     {
+  //       "transaction_id": "0.0.1012978-1762272523-472736901",
+  //       "consensus_timestamp": "1762272535.403383181",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3949434",
+  //           "amount": 114070314814,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3964804",
+  //           "amount": -114070314814,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1762272523-472736901",
+  //       "consensus_timestamp": "1762272535.403383188",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3946530",
+  //           "amount": 285175787,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3949434",
+  //           "amount": -285175787,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1762272523-472736901",
+  //       "consensus_timestamp": "1762272535.403383189",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.1012978",
+  //           "amount": 113785139027,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3949434",
+  //           "amount": -113785139027,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1762273208-305958667",
+  //       "consensus_timestamp": "1762273217.493599001",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3949434",
+  //           "amount": 102470863,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3964804",
+  //           "amount": -102470863,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1762273208-305958667",
+  //       "consensus_timestamp": "1762273217.493599008",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3946530",
+  //           "amount": 256177,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3949434",
+  //           "amount": -256177,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1762273208-305958667",
+  //       "consensus_timestamp": "1762273217.493599009",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.1012978",
+  //           "amount": 102214686,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3949434",
+  //           "amount": -102214686,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1763097518-864789747",
+  //       "consensus_timestamp": "1763097528.508554003",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.1012978",
+  //           "amount": -56943676856,
+  //           "is_approval": true
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3964804",
+  //           "amount": 56943676856,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1763100964-006681980",
+  //       "consensus_timestamp": "1763100971.263861003",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.1012978",
+  //           "amount": -56927162475,
+  //           "is_approval": true
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3964860",
+  //           "amount": 56927162475,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1763264209-277824796",
+  //       "consensus_timestamp": "1763264218.355223003",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.1012978",
+  //           "amount": 97116694,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3964860",
+  //           "amount": -97116694,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1763264336-337427373",
+  //       "consensus_timestamp": "1763264346.058744001",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.1012978",
+  //           "amount": -113631076,
+  //           "is_approval": true
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.1088553",
+  //           "amount": 113631076,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1763306185-608668887",
+  //       "consensus_timestamp": "1763306196.594601003",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.1012978",
+  //           "amount": 3584349,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3964860",
+  //           "amount": -3584349,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1763306279-778098019",
+  //       "consensus_timestamp": "1763306285.964335005",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.1012978",
+  //           "amount": 44173726645,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3964860",
+  //           "amount": -44173726645,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1763311191-079039878",
+  //       "consensus_timestamp": "1763311199.215935768",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3949434",
+  //           "amount": 62708511589,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3964804",
+  //           "amount": -62708511589,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1763311191-079039878",
+  //       "consensus_timestamp": "1763311199.215935773",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3946530",
+  //           "amount": 156771278,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3949434",
+  //           "amount": -156771278,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     },
+  //     {
+  //       "transaction_id": "0.0.1012978-1763311191-079039878",
+  //       "consensus_timestamp": "1763311199.215935774",
+  //       "account_id": "0.0.1012978",
+  //       "usdc_transfers": [
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.1012978",
+  //           "amount": 62551740311,
+  //           "is_approval": false
+  //         },
+  //         {
+  //           "token_id": "0.0.456858",
+  //           "account": "0.0.3949434",
+  //           "amount": -62551740311,
+  //           "is_approval": false
+  //         }
+  //       ],
+  //       "memo_base64": "",
+  //       "result": "SUCCESS",
+  //       "charged_tx_fee": 0
+  //     }
+  //   ]
+  // },
+
   const fetchTransactionsForAccounts = async (accountData) => {
     console.log(`Starting to fetch transactions for ${accountData.length} accounts...`);
     
